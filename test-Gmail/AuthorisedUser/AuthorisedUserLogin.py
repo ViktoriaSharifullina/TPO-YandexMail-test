@@ -26,7 +26,7 @@ def slow_typing(element, text):
 
 try:
     driver.get(url=url)
-    wait = WebDriverWait(driver, 20)
+    wait = WebDriverWait(driver, 40)
     button_email = driver.find_element("xpath",
                                        '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[1]/button')
     button_email.click()

@@ -1,11 +1,9 @@
 import time
 import random
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 
-# url = "https://accounts.google.com/v3/signin/identifier?dsh=S1728490719%3A1670309494363551&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=ARgdvAvHjI6CD-IrLY3hotEvjz_2UvpnrJxVUt-0RRcY1dCemTzH53YeNhvBfDheWtmirP7gAFia3Q"
 from selenium.webdriver.support.wait import WebDriverWait
 
 url = "https://passport.yandex.ru/auth/welcome?retpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821&backpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821%26noretpath%3D1&from=mail&origin=hostroot_homer_auth_ru"

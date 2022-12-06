@@ -1,11 +1,8 @@
 import time
 import random
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
-
-# url = "https://accounts.google.com/v3/signin/identifier?dsh=S1728490719%3A1670309494363551&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=ARgdvAvHjI6CD-IrLY3hotEvjz_2UvpnrJxVUt-0RRcY1dCemTzH53YeNhvBfDheWtmirP7gAFia3Q"
 from selenium.webdriver.support.wait import WebDriverWait
 
 url = "https://passport.yandex.ru/auth/welcome?retpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821&backpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821%26noretpath%3D1&from=mail&origin=hostroot_homer_auth_ru"
@@ -40,40 +37,31 @@ try:
     slow_typing(phone_input, phone)
     buttonNext.click()
 
-
-
     msgError = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                               '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]')))
-    get_source = driver.page_source
-    search_text = "Паспорт не смог обработать запрос. Попробуйте позднее или обновите страницу."
-    if(search_text in get_source):
+                                                            '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]')))
+    if  msgError:
         print("AuthorisedUserEmptyInput.py(phone): passed")
     else:
         print("AuthorisedUserEmptyInput.py(phone): failed")
 
-
-    #EmptyLogin
+    # EmptyLogin
     button_email = driver.find_element("xpath",
                                        '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[1]/button')
     button_email.click()
     email_input = wait.until(ec.visibility_of_element_located((By.XPATH,
                                                                '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/span/input')))
 
-    buttonNext = driver.find_element("xpath",
-                                     '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[4]/button')
+    buttonNext1 = driver.find_element("xpath",
+                                      '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[4]/button')
     slow_typing(email_input, email)
-    buttonNext.click()
+    buttonNext1.click()
 
-    msgError = wait.until(ec.visibility_of_element_located((By.XPATH,
+    msgError1 = wait.until(ec.visibility_of_element_located((By.XPATH,
                                                             '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/div')))
-    get_source = driver.page_source
-    search_text = "Логин не указан"
-
-    if (search_text in get_source):
+    if msgError1:
         print("AuthorisedUserEmptyInput.py(login): passed")
     else:
         print("AuthorisedUserEmptyInput.py(login): failed")
-
 
 
 except Exception as ex:
