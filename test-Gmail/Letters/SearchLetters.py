@@ -44,13 +44,16 @@ try:
 
     topic_email = "Приветствие"
     search_input = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                               '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[1]/div[2]/div/div/div/div[1]/form/div/span/input')))
+                                                                '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[1]/div[2]/div/div/div/div[1]/form/div/span/input')))
 
+    slow_typing(search_input, topic_email)
     buttonSearch = driver.find_element("xpath",
-                                      '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[1]/div[2]/div/div/div/div[1]/form/button')
+                                       '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[1]/div[2]/div/div/div/div[1]/form/button')
     buttonSearch.click()
+    answer = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                          '/html/body/div[3]/div[2]/div[7]/div/div[3]/div/div[2]/div/main/div[7]/div[1]/div/div/div[3]/div/div[1]/div')))
 
-    answer=driver.find_elements_by_xpath(  "//*[contains(text(), 'Приветствие')]")
+    time.sleep(5)
     if answer:
         print("SearchLetters.py test is OK!")
     else:
