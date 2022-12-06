@@ -9,7 +9,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 url = "https://passport.yandex.ru/auth/welcome?retpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821&backpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821%26noretpath%3D1&from=mail&origin=hostroot_homer_auth_ru"
-email = "aergergrgagrr"
+phone = ""
+email = ""
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.headless = False
@@ -28,6 +29,30 @@ def slow_typing(element, text):
 try:
     driver.get(url=url)
     wait = WebDriverWait(driver, 20)
+    button_phone = driver.find_element("xpath",
+                                       '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[2]/button')
+    button_phone.click()
+    phone_input = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                               '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/span/input')))
+
+    buttonNext = driver.find_element("xpath",
+                                     '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[4]/button')
+    slow_typing(phone_input, phone)
+    buttonNext.click()
+
+
+
+    msgError = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                               '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]')))
+    get_source = driver.page_source
+    search_text = "Паспорт не смог обработать запрос. Попробуйте позднее или обновите страницу."
+    if(search_text in get_source):
+        print("AuthorisedUserEmptyInput.py(phone): passed")
+    else:
+        print("AuthorisedUserEmptyInput.py(phone): failed")
+
+
+    #EmptyLogin
     button_email = driver.find_element("xpath",
                                        '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[1]/button')
     button_email.click()
@@ -39,18 +64,15 @@ try:
     slow_typing(email_input, email)
     buttonNext.click()
 
-
-
     msgError = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                               '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/div')))
+                                                            '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/div')))
     get_source = driver.page_source
-    search_text = "Такого аккаунта нет"
+    search_text = "Логин не указан"
 
-
-    if(search_text in get_source):
-        print("AuthorisedUserUnknownLogin.py:: passed")
+    if (search_text in get_source):
+        print("AuthorisedUserEmptyInput.py(login): passed")
     else:
-        print("AuthorisedUserUnknownLogin.py:: failed")
+        print("AuthorisedUserEmptyInput.py(login): failed")
 
 
 
