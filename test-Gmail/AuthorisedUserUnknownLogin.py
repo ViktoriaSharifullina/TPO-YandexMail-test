@@ -39,19 +39,15 @@ try:
     slow_typing(email_input, email)
     buttonNext.click()
 
-
-
     msgError = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                               '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/div')))
+                                                            '/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/div')))
     get_source = driver.page_source
     search_text = "Такого аккаунта нет"
 
-
-    if(search_text in get_source):
+    if search_text in get_source:
         print("Test #2: passed")
     else:
         print("Test #2: failed")
-
 
 
 except Exception as ex:
