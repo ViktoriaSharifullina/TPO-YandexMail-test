@@ -48,9 +48,9 @@ try:
 
 
     if(search_text in get_source):
-        print("AuthorisedUserUnknownLogin.py:: passed")
+        print("Test #2: passed")
     else:
-        print("AuthorisedUserUnknownLogin.py:: failed")
+        print("Test #2: failed")
 
 
 
