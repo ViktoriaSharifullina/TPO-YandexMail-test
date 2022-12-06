@@ -14,7 +14,7 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.headless = False
 chrome_options.add_argument('--start-maximized')
 chrome_options.add_argument('disable-infobars')
-driver = webdriver.Chrome(executable_path="C:/Users/Админ/PycharmProjects/test-Gmail/test-Gmail/chromedriver.exe",
+driver = webdriver.Chrome(executable_path="/test-Gmail/chromedriver.exe",
                           options=chrome_options)
 
 
