@@ -47,9 +47,17 @@ try:
     buttonWrite = wait.until(ec.visibility_of_element_located((By.XPATH,
                                                                '/html/body/div[3]/div[2]/div[7]/div/div[3]/div/nav/div[2]/div/div/div/a')))
 
-    if buttonWrite:
-        print("AuthorisedUserLogin test is OK!")
+    buttonAccount = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                                 '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[3]/div/div/a[1]/div')))
+    buttonAccount.click()
+    buttonLogOut = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                                '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[3]/div/div/div/ul/ul/li[6]/a/span')))
+    buttonLogOut.click()
 
+    button_LogIn = wait.until(ec.visibility_of_element_located((By.XPATH,'/html/body/div/div/div[1]/div[2]/button')))
+
+    if button_LogIn:
+        print("LogOutAuthorisedUser test is OK!")
 
 except Exception as ex:
     print(ex)
