@@ -4,9 +4,9 @@ Feature: MailAuth
     Given I'm on the login page
     When I select email as login type
     And I enter user's email <email>
-    And I click on login button
+    And I click on first button
     And I enter user's password <password>
-    And I click on login button
+    And I click on second button
     Then I should see user's Inbox page
 
     Examples:

@@ -4,7 +4,9 @@ from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def find_by_xpath(wait, driver, xpath):
@@ -17,7 +19,9 @@ def slow_typing(element, text):
         time.sleep(random.uniform(0, 0.3))
 
 
-def sendKeys(element):
+def send_keys(element):
     return element.send_keys(Keys.RETURN)
 
 
+def find_by_xpath_web_driver(driver, xpath):
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, xpath)))
