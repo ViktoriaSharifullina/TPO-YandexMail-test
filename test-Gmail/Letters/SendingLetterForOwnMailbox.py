@@ -1,6 +1,7 @@
 import time
 import random
 from selenium import webdriver
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
@@ -48,22 +49,26 @@ try:
 
     # sending an email
     buttonWrite.click()
-    label_whom = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                              "/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/div/label")))
-    time.sleep(3)
-    to_whom = wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR,
-                                                           '#js-apps-container > div.ns-view-app.ns-view-id-61.mail-App.js-mail-App > div.ns-view-compose-manager-container-box.ns-view-id-81.mail-ComposeManagerContainer_box > div > div > div.Popup2.Popup2_visible.Popup2_view_default.ComposePopup.ComposePopup_size_large > div > div > div > div.composeReact.ComposeManager-PopupCompose > div.composeReact__inner > div.composeReact__scrollable-container > div > div.composeReact__scrollable-top-content > div.composeReact__header > div.composeReact__headerInputs > div > div.ComposeRecipients-TopRow > div > div > div > div')))
-    slow_typing(to_whom, email)
-    theme = driver.find_element("xpath",
-                                '/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div[1]/div[1]/div/div[3]/div/div/input')
-
-
-    slow_typing(email_input, "Приветствие")
-    msg = driver.find_element("xpath",
-                              '/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[2]/div[2]/div[1]/div/div/div')
-    slow_typing(email_input, "Привет!! Как дела?")
-
-
+    inputWhom = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                               "/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/div/div/div/div")))
+    slow_typing(inputWhom, email)
+    inputWhom.send_keys(Keys.RETURN)
+    inputTheme = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                              '/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[1]/div[1]/div[1]/div/div[3]/div/div/input')))
+    slow_typing(inputTheme, "Приветствие")
+    inputTheme.send_keys(Keys.RETURN)
+    inputMsg = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                            '/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[2]/div[2]/div[1]/div/div/div/div')))
+    slow_typing(inputMsg, "Привет, как дела?")
+    inputMsg.send_keys(Keys.RETURN)
+    buttonSend = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                            '/html/body/div[3]/div[2]/div[10]/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div/div[1]/div[1]/button')))
+    buttonSend.click()
+    done = wait.until(ec.visibility_of_element_located((By.XPATH,'/html/body/div[16]/div/div[2]/div[1]/span')))
+    if done:
+        print("SendingLetterForOwnMailbox test is OK!")
+    else:
+        print("SendingLetterForOwnMailbox test is FAILED!")
 
 except Exception as ex:
     print(ex)
