@@ -16,23 +16,6 @@ driver = webdriver.Chrome(executable_path="/test-Gmail/chromedriver.exe",
                           options=chrome_options)
 
 
-def auth(driver_data, email_data, password_data):
-    button_email = driver_data.find_element("xpath",
-                                       '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[1]/button')
-    button_email.click()
-    email_input = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                               '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/span/input')))
-
-    button_next = driver_data.find_element("xpath",
-                                     '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[4]/button')
-    slow_typing(email_input, email_data)
-    button_next.click()
-    password_input = wait.until(ec.visibility_of_element_located((By.XPATH,
-                                                                  '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[2]/div[1]/span/input')))
-    slow_typing(password_input, password_data)
-    button_login = driver_data.find_element("xpath",
-                                      '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button')
-    button_login.click()
 
 
 def slow_typing(element, text):
@@ -44,7 +27,22 @@ def slow_typing(element, text):
 try:
     driver.get(url=url)
     wait = WebDriverWait(driver, 20)
-    auth(driver, email, password)
+    button_email = driver.find_element("xpath",
+                                       '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[1]/button')
+    button_email.click()
+    email_input = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                               '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/span/input')))
+
+    button_next = driver.find_element("xpath",
+                                      '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[4]/button')
+    slow_typing(email_input, email)
+    button_next.click()
+    password_input = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                                                  '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[2]/div[1]/span/input')))
+    slow_typing(password_input, password)
+    button_login = driver.find_element("xpath",
+                                       '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button')
+    button_login.click()
     topic_email = "sdfdfsdf"
     search_input = wait.until(ec.visibility_of_element_located((By.XPATH,
                                                                 '/html/body/div[3]/div[2]/div[7]/div/div[2]/div/div/div[1]/div[2]/div/div/div/div[1]/form/div/span/input')))
