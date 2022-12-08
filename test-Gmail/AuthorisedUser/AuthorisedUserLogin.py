@@ -18,12 +18,6 @@ driver = webdriver.Chrome(executable_path="/test-Gmail/chromedriver.exe",
                           options=chrome_options)
 
 
-def slow_typing(element, text):
-    for character in text:
-        element.send_keys(character)
-        time.sleep(random.uniform(0, 0.3))
-
-
 try:
     driver.get(url=url)
     wait = WebDriverWait(driver, 40)
