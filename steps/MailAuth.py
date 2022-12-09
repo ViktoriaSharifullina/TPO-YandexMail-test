@@ -89,3 +89,21 @@ def step_impl(context):
 
     context.driver.close()
     context.driver.quit()
+
+
+@step("I enter {something} which is not user's password")
+def step_impl(context, something):
+    wait = WebDriverWait(context.driver, 40)
+    password_input = find_by_xpath(wait,
+                                   '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[2]/div[1]/span/input')
+    slow_typing(password_input, something)
+
+
+@then("I should see WrongPassword message")
+def step_impl(context):
+    wait = WebDriverWait(context.driver, 40)
+    find_by_xpath(wait,
+                  '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[2]/div[1]/div')
+
+    context.driver.close()
+    context.driver.quit()
