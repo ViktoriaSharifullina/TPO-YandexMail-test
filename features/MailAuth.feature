@@ -1,54 +1,54 @@
 Feature: MailAuth
 
-#  Scenario Outline: RegisteredLogin
-#    Given I'm on the login page
-#    When I select email as login type
-#    And I enter user's email <email>
-#    And I click on first button
-#    And I enter user's password <password>
-#    And I click on second button
-#    Then I should see user's Inbox page
-#
-#    Examples:
-#      | email                    | password |
-#      | mietpythontest@yandex.ru | 2323test |
+  Scenario Outline: RegisteredLogin
+    Given I'm on the login page
+    When I select email as login type
+    And I enter user's email <email>
+    And I click on first button
+    And I enter user's password <password>
+    And I click on second button
+    Then I should see user's Inbox page
+
+    Examples:
+      | email                    | password |
+      | mietpythontest@yandex.ru | 2323test |
 
 
-#  Scenario Outline: LoginStranger
-#    Given I'm on the login page
-#    When I select email as login type
-#    And I enter stranger's email <email>
-#    And I click on login button
-#    Then I should see NoUserExists message
-#
-#    Examples:
-#      | email         |
-#      | aergergrgagrr |
+  Scenario Outline: LoginStranger
+    Given I'm on the login page
+    When I select email as login type
+    And I enter stranger's email <email>
+    And I click on login button
+    Then I should see NoUserExists message
+
+    Examples:
+      | email         |
+      | aergergrgagrr |
 
 
-#  Scenario Outline: LoginRegisteredWrongPass
-#    Given I'm on the login page
-#    When I select email as login type
-#    And I enter user's email <email>
-#    And I click on first button
-#    And I enter <something> which is not user's password
-#    And I click on second button
-#    Then I should see WrongPassword message
-#
-#    Examples:
-#      | something  | email                    |
-#      | 1234567890 | mietpythontest@yandex.ru |
+  Scenario Outline: LoginRegisteredWrongPass
+    Given I'm on the login page
+    When I select email as login type
+    And I enter user's email <email>
+    And I click on first button
+    And I enter <something> which is not user's password
+    And I click on second button
+    Then I should see WrongPassword message
+
+    Examples:
+      | something  | email                    |
+      | 1234567890 | mietpythontest@yandex.ru |
 
 
-#  Scenario Outline: LogOut
-#    Given I'm authenticated user on inbox page <email> <password>
-#    When I click on my profile picture
-#    And Click on LogOut
-#    Then I should not see user's Inbox page
-#
-#    Examples:
-#      | email                    | password |
-#      | mietpythontest@yandex.ru | 2323test |
+  Scenario Outline: LogOut
+    Given I'm authenticated user on inbox page <email> <password>
+    When I click on my profile picture
+    And Click on LogOut
+    Then I should not see user's Inbox page
+
+    Examples:
+      | email                    | password |
+      | mietpythontest@yandex.ru | 2323test |
 
   Scenario: LoginEmptyInputEmail
     Given I'm on the login page

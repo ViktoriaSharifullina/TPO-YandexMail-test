@@ -1,5 +1,5 @@
 Feature: MailSend
-  # An authorized user should be able to send and receive messages
+   An authorized user should be able to send and receive messages
 
   Scenario Outline: SendToSelf
     Given I am authenticated user on inbox page
