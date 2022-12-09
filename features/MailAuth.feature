@@ -14,31 +14,31 @@ Feature: MailAuth
 #      | mietpythontest@yandex.ru | 2323test   |
 
 
-  Scenario Outline: LoginStranger
-    Given I'm on the login page
-    When I select email as login type
-    And I enter stranger's email <email>
-    And I click on login button
-    Then I should see NoUserExists message
-
-    Examples:
-      | email         |
-      | aergergrgagrr |
-
-
-#  Scenario Outline: LoginRegisteredWrongPass
+#  Scenario Outline: LoginStranger
 #    Given I'm on the login page
 #    When I select email as login type
-#    And I enter user's email
+#    And I enter stranger's email <email>
 #    And I click on login button
-#    And I enter <something> which is not user's password
-#    And I click on login button
-#    Then I should see WrongPassword message
+#    Then I should see NoUserExists message
 #
 #    Examples:
-#      | something  |
-#      | 1234567890 |
-#
+#      | email         |
+#      | aergergrgagrr |
+
+
+  Scenario Outline: LoginRegisteredWrongPass
+    Given I'm on the login page
+    When I select email as login type
+    And I enter user's email <email>
+    And I click on first button
+    And I enter <something> which is not user's password
+    And I click on second button
+    Then I should see WrongPassword message
+
+    Examples:
+      | something  | email                    |
+      | 1234567890 | mietpythontest@yandex.ru |
+
 #
 #  Scenario: LogOut
 #    Given I'm authenticated user on inbox page
