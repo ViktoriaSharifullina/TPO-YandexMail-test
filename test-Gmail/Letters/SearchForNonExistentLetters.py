@@ -31,6 +31,9 @@ try:
     button_email = driver.find_element("xpath",
                                        '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[1]/div[1]/button')
     button_email.click()
+
+
+
     email_input = wait.until(ec.visibility_of_element_located((By.XPATH,
                                                                '/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[2]/div/div[2]/span/input')))
 
