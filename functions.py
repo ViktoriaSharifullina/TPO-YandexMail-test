@@ -1,15 +1,13 @@
-import time
 import random
-from selenium import webdriver
+import time
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 
 
-def find_by_xpath(wait, driver, xpath):
+def find_by_xpath(wait, xpath):
     return wait.until(ec.visibility_of_element_located((By.XPATH, xpath)))
 
 
@@ -24,4 +22,4 @@ def send_keys(element):
 
 
 def find_by_xpath_web_driver(driver, xpath):
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, xpath)))
+    return WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, xpath)))
