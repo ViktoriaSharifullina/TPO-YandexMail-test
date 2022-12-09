@@ -1,31 +1,31 @@
 Feature: MailAuth
 
-  Scenario Outline: RegisteredLogin
-    Given I'm on the login page
-    When I select email as login type
-    And I enter user's email <email>
-    And I click on first button
-    And I enter user's password <password>
-    And I click on second button
-    Then I should see user's Inbox page
-
-    Examples:
-      | email                     | password       |
-      | viksharifullina@yandex.ru | BodnarchuK28011 |
-
-
-#  Scenario Outline: LoginStranger
+#  Scenario Outline: RegisteredLogin
 #    Given I'm on the login page
 #    When I select email as login type
-#    And I enter stranger's email <email>
-#    And I click on login button
-#    Then I should see NoUserExists message
+#    And I enter user's email <email>
+#    And I click on first button
+#    And I enter user's password <password>
+#    And I click on second button
+#    Then I should see user's Inbox page
 #
 #    Examples:
-#      | email         |
-#      | aergergrgagrr |
-#
-#
+#      | email                    | password   |
+#      | mietpythontest@yandex.ru | 2323test   |
+
+
+  Scenario Outline: LoginStranger
+    Given I'm on the login page
+    When I select email as login type
+    And I enter stranger's email <email>
+    And I click on login button
+    Then I should see NoUserExists message
+
+    Examples:
+      | email         |
+      | aergergrgagrr |
+
+
 #  Scenario Outline: LoginRegisteredWrongPass
 #    Given I'm on the login page
 #    When I select email as login type
