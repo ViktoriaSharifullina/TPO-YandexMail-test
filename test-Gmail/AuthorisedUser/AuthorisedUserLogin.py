@@ -8,8 +8,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 url = "https://passport.yandex.ru/auth/welcome?retpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821&backpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fuid%3D1002378821%26noretpath%3D1&from=mail&origin=hostroot_homer_auth_ru"
-email = "viksharifullina@yandex.ru"
-password = "BodnarchuK2801"
+email = 'mietpythontest@yandex.ru'
+password = '2323test'
 chrome_options = webdriver.ChromeOptions()
 chrome_options.headless = False
 chrome_options.add_argument('--start-maximized')
